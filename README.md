@@ -113,25 +113,31 @@ The highest risk is **Port 21 - FTP (vsftpd 2.3.4)** because it contains a known
 ### Image 1
 <img width="794" height="278" alt="image" src="https://github.com/user-attachments/assets/b52c640f-fa80-495f-a3f9-1e782997c2c1" />
 Answer:
+
 ```bash
 TTL = 64
 ```
+
 The TTL (Time To Live) value observed in the ICMP response is 64. Different operating systems use different default TTL values. Linux and Unix-based systems typically use a TTL of 64, while Windows uses 128. Therefore, based on the TTL value, the target system is identified as a Linux system.
 
 ### Image 2
 <img width="440" height="301" alt="image" src="https://github.com/user-attachments/assets/b9657c75-df55-45f9-8fc1-7ec6714ad794" />
 Answer:
+
 ```bash
 TTL = 255
 ```
+
 The observed TTL value is 255. Different systems use different default TTL values. While Linux systems typically use 64 and Windows uses 128, a TTL value of 255 is commonly associated with network devices such as routers or switches. Therefore, the target device is likely a network infrastructure device.
 
 ### Image 3
 <img width="810" height="186" alt="image" src="https://github.com/user-attachments/assets/a3bfb299-7bb0-4788-9d74-98b85ab5b529" />
 Answer:
+
 ```bash
 TTL = 128
 ```
+
 The TTL value observed in the ICMP response is 128. Different operating systems use different default TTL values. Windows systems typically use a TTL of 128, while Linux systems use 64. Therefore, the target system is identified as a Windows system.
 
 
