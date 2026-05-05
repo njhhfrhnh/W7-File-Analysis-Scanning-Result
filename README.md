@@ -12,7 +12,9 @@ Additionally, its payload contained a long alphanumeric string instead of the us
 <img width="605" height="321" alt="image" src="https://github.com/user-attachments/assets/389d6b42-a0e5-4580-b0f2-909742a23a86" />
 
 
+
 It looks like the data of the file is base-64 encoded. So, I use `cyberchef` to decode it. 
+
 <img width="1912" height="822" alt="image" src="https://github.com/user-attachments/assets/c09d7d0e-f29e-4a86-9514-afe60685a67b" />
 Answer:
 ```bash
