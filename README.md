@@ -58,4 +58,53 @@ After mapping the symbols correctly, the decoded message is:
 EX MACHINA AVA
 ```
 
+## **Question 3: Interpret an Nmap Output**
+PORT  STATE SERVICE VERSION
+21/tcp open ftp	vsftpd 2.3.4 22/tcp open ssh		OpenSSH 5.3p1 80/tcp open http			Apache 2.2.8 139/tcp open netbios-ssn
+445/tcp open microsoft-ds Windows 7 Professional 7601 Service Pack 1
+
+### Questions:
+
+## 1. What can an attacker do with each port?
+
+| Port | Service | Possible Attacker Actions |
+|------|--------|--------------------------|
+| 21 | FTP | Upload/download files, exploit misconfigurations, possible backdoor access |
+| 22 | SSH | Remote login, brute-force attacks, credential access |
+| 80 | HTTP | Web attacks (SQLi, XSS), directory enumeration |
+| 139 | NetBIOS | Enumerate users, shares, gather system info |
+| 445 | SMB | Access shared files, remote execution, lateral movement |
+
+
+## 2. What vulnerabilities are likely present based on the version?
+
+| Service | Version | Possible Vulnerabilities |
+|--------|--------|-------------------------|
+| vsftpd | 2.3.4 | Known backdoor vulnerability allowing remote shell access |
+| OpenSSH | 5.3p1 | Outdated, vulnerable to brute-force and weak encryption |
+| Apache | 2.2.8 | Outdated, vulnerable to RCE, directory traversal |
+| SMB | Windows 7 SP1 | Vulnerable to EternalBlue (MS17-010) |
+
+
+## 3. Which one is the highest risk and why?
+
+The highest risk is **FTP (vsftpd 2.3.4)** because it contains a known backdoor vulnerability that may allow attackers to gain direct remote shell access without authentication.
+
+
+## 4. What attack path can be built from this?
+
+1. Exploit FTP backdoor → gain initial access  
+2. Escalate privileges on the system  
+3. Use SMB (port 445) for lateral movement  
+4. Access sensitive files or systems  
+5. Maintain persistence
+   
+
+## 5. What should be the remediation?
+
+- **FTP (21)**: Update vsftpd, disable anonymous access  
+- **SSH (22)**: Use key-based authentication, disable root login  
+- **HTTP (80)**: Update Apache, patch vulnerabilities  
+- **SMB (139/445)**: Disable if not needed, apply MS17-010 patch, restrict access  
+
 
